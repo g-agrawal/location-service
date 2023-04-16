@@ -34,6 +34,7 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 @WebMvcTest(ZoneController.class)
 public class ZoneControllerTest {
+
     @MockBean
     private ZoneService zoneService;
 
@@ -56,6 +57,7 @@ public class ZoneControllerTest {
         paramsMap.add("lng", "7.123456");
 
         when(zoneService.getNearestZones(lat, lng)).thenReturn(zones);
+
         mockMvc.perform(get("/zones/nearBy").params(paramsMap))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(zones.size()));
