@@ -19,22 +19,15 @@ import java.util.List;
 @RestController
 public class ZoneController {
 
+    @Autowired
+    private ZoneService zoneService;
 
-
-    //localhost:3000
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "Requestor-Type")
     @GetMapping("/zones/nearBy")
     public ResponseEntity<List<Zone>> getNearByZones(@RequestParam double lat, @RequestParam double lng) {
-        List<Zone> zoneList = new ArrayList<>();
-        zoneList.add(new Zone(101, "ABC", "Description ABC sdfasdf cvbxcvb erg ds gerg erg gs ser s vdf sdfg serg erg dfv "));
-        zoneList.add(new Zone(120, "P QR", "Description P Q R"));
-        zoneList.add(new Zone(143, "X Y Z", "Description X Y Z"));
-
-        Point point = new Point(lat, lng);
-        Distance distanceKm = new Distance(2, Metrics.KILOMETERS);
-        //List<Zone> zones = zoneRepository.findByLocationNear(point, distanceKm);
+        List<Zone> zones = zoneService.getNearestZones(lat, lng);
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-Get-Header", "ExampleHeader");
-        return ResponseEntity.ok().headers(headers).body(zoneList);
+        return ResponseEntity.ok().headers(headers).body(zones);
     }
 }

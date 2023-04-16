@@ -10,12 +10,11 @@ import java.util.List;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-//    @Autowired
-//    AddressProviderService addressProviderService;
+    @Autowired
+    AddressProviderService addressProviderService;
 
     @Override
     public List<Address> getAddresses(String text) {
-        //return addressProviderService.getAddresses(text);
-        return new ArrayList<>();
+        return addressProviderService.getAddresses(text);
     }
 }

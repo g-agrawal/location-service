@@ -35,7 +35,7 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 @WebMvcTest(ZoneController.class)
 public class ZoneControllerTest {
     @MockBean
-    private ZoneRepository zoneRepository;
+    private ZoneService zoneService;
 
     @Autowired
     private MockMvc mockMvc;
@@ -55,10 +55,7 @@ public class ZoneControllerTest {
         paramsMap.add("lat", "6.123456");
         paramsMap.add("lng", "7.123456");
 
-        Point point = new Point(lat, lng);
-        Distance distanceKm = new Distance(2, Metrics.KILOMETERS);
-
-        when(zoneRepository.findByLocationNear(point, distanceKm)).thenReturn(zones);
+        when(zoneService.getNearestZones(lat, lng)).thenReturn(zones);
         mockMvc.perform(get("/zones/nearBy").params(paramsMap))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(zones.size()));

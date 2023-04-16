@@ -1,6 +1,5 @@
 package com.mobility.locationservice.address;
 
-import com.mobility.locationservice.address.provider.AddressProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +12,12 @@ import java.util.List;
 public class AddressController {
 
     @Autowired
-    public AddressProviderService addressService;
+    public AddressService addressService;
 
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "Requestor-Type")
     @GetMapping("/address/search")
     public ResponseEntity<List<Address>> getMatchAddresses(@RequestParam String text) {
         List<Address> addressList = addressService.getAddresses(text);
-        //List<Address> addressList = new ArrayList<>();
-        System.out.println(text);
         HttpHeaders headers = new HttpHeaders();
         headers.set("X-Get-Header", "ExampleHeader");
         return ResponseEntity.ok().headers(headers).body(addressList);
