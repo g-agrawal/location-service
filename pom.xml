@@ -9,11 +9,11 @@
 		<version>3.0.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>EntertainmentApp</artifactId>
+	<groupId>com.mobility</groupId>
+	<artifactId>com.mobility</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>EntertainmentApp</name>
-	<description>Demo project for Spring Boot</description>
+	<name>com.mobility</name>
+	<description>Bike Rental Demp Project</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
