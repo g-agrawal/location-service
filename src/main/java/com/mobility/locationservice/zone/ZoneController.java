@@ -26,7 +26,7 @@ public class ZoneController {
 
     Logger log = LoggerFactory.getLogger(ZoneController.class);
 
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "Requestor-Type")
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/zones/nearBy")
     public ResponseEntity<List<Zone>> getNearByZones(@RequestParam double lat, @RequestParam double lng) {
         log.info("Request received for lat/lng");
