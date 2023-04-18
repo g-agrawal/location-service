@@ -47,14 +47,14 @@ public class ZoneControllerTest {
     @Test
     void should_return_list_of_zones_with_filter() throws Exception {
         List<Zone> zones = new ArrayList<>();
-        zones.add(new Zone(101, "ABC", "Description ABC"));
-        zones.add(new Zone(120, "P QR", "Description P Q R"));
-        zones.add(new Zone(143, "X Y Z", "Description X Y Z"));
-        double lat = 6.123456;
-        double lng = 7.123456;
+        zones.add(new Zone(106, "Mobility Zone AECS Layout", "kundalahalli gate, aecs layout road, bangalore, karnataka, india", 3.123456, 4.123456));
+        zones.add(new Zone(107, "Mobility Zone Kundalahalli Signal", "kundalahalli gate, thubarahalli, bangalore, karnataka, india", 3.123456, 4.123456));
+
+        double lat = 3.123456;
+        double lng = 4.123456;
         MultiValueMap<String, String> paramsMap = new LinkedMultiValueMap<>();
-        paramsMap.add("lat", "6.123456");
-        paramsMap.add("lng", "7.123456");
+        paramsMap.add("lat", "3.123456");
+        paramsMap.add("lng", "4.123456");
 
         when(zoneService.getNearestZones(lat, lng)).thenReturn(zones);
 
