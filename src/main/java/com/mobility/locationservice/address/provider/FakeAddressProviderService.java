@@ -16,6 +16,6 @@ public class FakeAddressProviderService implements AddressProviderService {
         addressList.add(new Address(3, "rmz, pech park", "bangalore, karnataka, india", 9.123456, 10.123456));
         addressList.add(new Address(4, "manyata, tech park", "bangalore, karnataka, india", 9.123456, 10.123456));
         List<Address> res = addressList.stream().filter(address -> address.getName().toLowerCase().contains(text) || address.getCompleteAddress().toLowerCase().contains(text)).toList();
-        return res.isEmpty() ? addressList : res;
+        return res;
     }
 }

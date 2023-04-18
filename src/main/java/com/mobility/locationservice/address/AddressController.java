@@ -14,7 +14,6 @@ public class AddressController {
     @Autowired
     public AddressService addressService;
 
-    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "Requestor-Type")
     @GetMapping("/address/search")
     public ResponseEntity<List<Address>> getMatchAddresses(@RequestParam String text) {
         List<Address> addressList = addressService.getAddresses(text);
